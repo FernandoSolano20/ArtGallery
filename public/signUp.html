@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css/form.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Formularios</title>
+</head>
+
+<body>
+    <div class="contenedor-formulario">
+        <div class="wrap">
+            <form action="" class="formulario" name="formulario_registro" method="get">
+                <div class="columnForm">
+                    <div class="input-group">
+                        <input type="text" id="name" name="name">
+                        <label class="label" for="name">Nombre:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="firstLastName" name="firstLastName">
+                        <label class="label" for="firstLastName">Primer Apellido:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="secondLastName" name="secondLastName">
+                        <label class="label" for="secondLastName">Segundo Apellido:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" name="email">
+                        <label class="label" for="email">Correo Electrónico:</label>
+                    </div>
+                    <div class="input-group">
+                        <label class="labelFile">
+                            <i class="material-icons">attach_file</i>
+                            <span class="title">Add File</span>
+                            <input type="file" / id="img">
+                        </label>
+                    </div>
+                </div>
+                <div class="columnForm">
+                    <div class="input-group">
+                        <input type="password" id="pass" name="pass">
+                        <label class="label" for="pass">Contraseña:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="pass2" name="pass2">
+                        <label class="label" for="pass2">Repetir Contraseña:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="descript" name="descript">
+                        <label class="label" for="descript">Descripción:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="stageName" name="stageName">
+                        <label class="label" for="stageName">Nombre Artístico:</label>
+                    </div>
+                    <div class="input-group radio">
+                        <input type="radio" name="sexo" id="hombre" value="Hombre">
+                        <label for="hombre">Hombre</label>
+                        <input type="radio" name="sexo" id="mujer" value="Mujer">
+                        <label for="mujer">Mujer</label>
+                        <input type="radio" name="sexo" id="otro" value="Otro">
+                        <label for="otro">Otro</label>
+                    </div>
+
+                    <input type="submit" id="btn-submit" value="Enviar">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/styleForm.js"></script>
+    <script src="/js/createPainter.js"></script>
+</body>
+
+</html>

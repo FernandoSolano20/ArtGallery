@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="menu_bar">
+      <a href="#" class="bt-menu"><span class="icon-list2"></span>Menú</a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#"><span class="icon-house"></span>Inicio</a></li>
+        <li><a href="#"><span class="icon-suitcase"></span>Trabajos</a></li>
+        <li class="submenu">
+          <a href="#"><span class="icon-rocket"></span>Proyectos<span class="caret icon-arrow-down6"></span></a>
+          <ul class="children">
+            <li><a href="#">SubElemento #1 <span class="icon-dot"></span></a></li>
+            <li><a href="#">SubElemento #2 <span class="icon-dot"></span></a></li>
+            <li><a href="#">SubElemento #3 <span class="icon-dot"></span></a></li>
+          </ul>
+        </li>
+        <li><a href="#"><span class="icon-earth"></span>Servicios</a></li>
+        <li><a href="#"><span class="icon-mail"></span>Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="blog-slider__container">
+    <div class="blogSlides fade">
+      <div class="blog-slider__numbertext">1 / 3</div>
+      <img src="https://www.dropbox.com/s/6i60hcgrz7yatl5/nexus-6-2770-001.jpg?raw=1">
+      <div class="blog-slider__text">Caption Text</div>
+    </div>
+
+    <div class="blogSlides fade">
+      <div class="blog-slider__numbertext">2 / 3</div>
+      <img src="https://www.dropbox.com/s/wu9u6l53z3q6zpa/date.jpg?raw=1">
+      <div class="blog-slider__text">Caption Two</div>
+    </div>
+
+    <div class="blogSlides fade">
+      <div class="blog-slider__numbertext">3 / 3</div>
+      <img src="https://www.dropbox.com/s/c7vg753l95iv7g8/photo-bg-04.jpg?raw=1">
+      <div class="blog-slider__text">Caption Three</div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+
+  <div class="blogSlider__dots" style="text-align:center">
+    <span class="blogSlider__dots--dot" onclick="currentSlide(1)"></span>
+    <span class="blogSlider__dots--dot" onclick="currentSlide(2)"></span>
+    <span class="blogSlider__dots--dot" onclick="currentSlide(3)"></span>
+  </div>
+  <script src="../js/script.js"></script>
+</body>
+
+</html>
