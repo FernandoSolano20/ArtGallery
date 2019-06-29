@@ -1,25 +1,51 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const painter = require('./routes/painterRoute'); // Imports routes for the products
-const app = express();
-app.use(express.static('C:/Users/luisf/Desktop/artGalery/public'));
-    app.use(bodyParser.urlencoded({ extended: false }));
-// Set up mongoose connection
 const mongoose = require('mongoose');
-//var Schema = mongoose.Schema;
+const cors = require('cors');
+require('dotenv').config();
 
-let mongoDB = 'mongodb://localhost:27017/galery';
-mongoose.connect(mongoDB);
-mongoose.Promise = global.Promise;
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+const user = require('./routes/userRoute');
 
+const app = express();
+app.use(cors());
+app.use(express.static(__dirname + "./../public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/painters', painter);
-
-let port = 8080;
-app.listen(port, () => {
-    console.log('Server is up and running on port numner ' + port);
+app.use(function(req, res, next) {/*que lo que va en los encabezados*/
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');//verbos
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', true);//para los credenciales
+    next();
 });
 
+
+
+let mongoDB = 'mongodb://localhost:27017/galery';
+/*mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));*/
+
+mongoose.connect(mongoDB, { useNewUrlParser: true }, function(err, database) {
+    if (err) {
+        console.log(err);
+        process.exit(1);
+    }
+
+    db = database;
+    
+
+    // Se inicia la aplicacion.
+    const server = app.listen(8080 || 8000, function() {
+        let port = server.address().port;
+        console.log('Server is up and running on port numner ' + port);
+    });
+});
+
+function handleError(res, reason, message, code) {
+    console.log("ERROR: " + reason);
+    res.status(code || 500).json({ "error": message });
+}
+
+app.use('/users', user);

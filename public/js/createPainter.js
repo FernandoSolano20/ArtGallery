@@ -1,4 +1,4 @@
-function crearpersona() {
+function createUser() {
 
     var painter =
     {
@@ -14,7 +14,7 @@ function crearpersona() {
     };
 
     if (document.getElementById("pass2").value == document.getElementById("pass").value) {
-        fetch('http://localhost:8080/painters/create', {
+        fetch('http://localhost:8080/users/create', {
             method: "POST",
             body: JSON.stringify(painter),
             headers:{
@@ -42,3 +42,7 @@ function crearpersona() {
         alert("Debe digitar la misma clave en ambos campos");
     }
 }
+
+var btnSave = document.getElementById("btn-save");
+if(btnSave)
+    btnSave.addEventListener("click", createUser);
