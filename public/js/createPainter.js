@@ -1,5 +1,4 @@
 function createUser() {
-    /*Change*/
     var name = document.getElementById('name');
     var firstLastName = document.getElementById('firstLastName');
     var secondLastName = document.getElementById('secondLastName');
