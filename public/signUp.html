@@ -16,6 +16,18 @@
         <div class="wrap">
             <form action="" class="formulario" name="formulario_registro" method="get">
                 <div class="columnForm">
+                    <div class="input-group radio" id="identification">
+                        <input type="radio" name="id" id="cedula" value="Cédula" checked>
+                        <label for="cedula">Cédula</label>
+                        <input type="radio" name="id" id="pasaporte" value="Pasaporte">
+                        <label for="pasaporte">Pasaporte</label>
+                        <input type="radio" name="id" id="residente" value="Residente">
+                        <label for="residente">Residente</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" id="ID" name="Cédula">
+                        <label class="label" for="ID" id="labelID">Cédula:</label>
+                    </div>
                     <div class="input-group">
                         <input type="text" id="name" name="name">
                         <label class="label" for="name">Nombre:</label>
@@ -29,10 +41,6 @@
                         <label class="label" for="secondLastName">Segundo Apellido:</label>
                     </div>
                     <div class="input-group">
-                        <input type="email" id="email" name="email">
-                        <label class="label" for="email">Correo Electrónico:</label>
-                    </div>
-                    <div class="input-group">
                         <label class="labelFile">
                             <i class="material-icons">attach_file</i>
                             <span class="title">Add File</span>
@@ -41,22 +49,6 @@
                     </div>
                 </div>
                 <div class="columnForm">
-                    <div class="input-group">
-                        <input type="password" id="pass" name="pass">
-                        <label class="label" for="pass">Contraseña:</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" id="pass2" name="pass2">
-                        <label class="label" for="pass2">Repetir Contraseña:</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="descript" name="descript">
-                        <label class="label" for="descript">Descripción:</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="stageName" name="stageName">
-                        <label class="label" for="stageName">Nombre Artístico:</label>
-                    </div>
                     <div class="input-group radio">
                         <input type="radio" name="sexo" id="hombre" value="Hombre">
                         <label for="hombre">Hombre</label>
@@ -65,15 +57,32 @@
                         <input type="radio" name="sexo" id="otro" value="Otro">
                         <label for="otro">Otro</label>
                     </div>
-
-                    <input type="submit" id="btn-save" value="Enviar">
+                    <div class="input-group">
+                        <input type="email" id="email" name="email">
+                        <label class="label" for="email">Correo Electrónico:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="pass" name="pass">
+                        <label class="label" for="pass">Contraseña:</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="pass2" name="pass2">
+                        <label class="label" for="pass2">Repetir Contraseña:</label>
+                    </div>
+                    <div class="input-group radio" id="client">
+                        <input type="radio" name="user" id="painter" value="Pintor">
+                        <label for="painter">Pintor</label>
+                        <input type="radio" name="user" id="user" value="Usuario">
+                        <label for="user">Usuario</label>
+                    </div>
+                    <input type="button" id="btn-save" value="Enviar">
                 </div>
             </form>
         </div>
     </div>
 
-    <script src="/js/styleForm.js"></script>
     <script src="/js/createPainter.js"></script>
+    <script src="/js/styleForm.js"></script>
 </body>
 
 </html>

@@ -8,8 +8,8 @@ let UserSchema = new Schema({
     img: { data: Buffer, contentType: String },
     email: {type: String, required: true, max: 100},
     password: {type: String, required: true, max: 100},
-    description: {type: String, required: true, max: 100},
-    stageName: {type: String, required: true, max: 100},
+    description: {type: String, required: false, max: 100},
+    stageName: {type: String, required: false, max: 100},
     gender: {type: String, required: true, max: 10},
 });
 
