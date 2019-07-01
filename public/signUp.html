@@ -6,12 +6,17 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/css/alertWarning.css">
+    <link href="https://kit-pro.fontawesome.com/releases/v5.9.0/css/pro.min.css" data-prerender="keep" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Formularios</title>
 </head>
 
 <body>
+    <div class="alert">
+
+    </div>
     <div class="contenedor-formulario">
         <div class="wrap">
             <form action="" class="formulario" name="formulario_registro" method="get">
@@ -25,19 +30,19 @@
                         <label for="residente">Residente</label>
                     </div>
                     <div class="input-group">
-                        <input type="number" id="ID" name="Cédula">
+                        <input type="number" id="ID" name="cedula">
                         <label class="label" for="ID" id="labelID">Cédula:</label>
                     </div>
                     <div class="input-group">
-                        <input type="text" id="name" name="name">
+                        <input type="text" id="name" name="nombre">
                         <label class="label" for="name">Nombre:</label>
                     </div>
                     <div class="input-group">
-                        <input type="text" id="firstLastName" name="firstLastName">
+                        <input type="text" id="firstLastName" name="primer apellido">
                         <label class="label" for="firstLastName">Primer Apellido:</label>
                     </div>
                     <div class="input-group">
-                        <input type="text" id="secondLastName" name="secondLastName">
+                        <input type="text" id="secondLastName" name="segundo apellido">
                         <label class="label" for="secondLastName">Segundo Apellido:</label>
                     </div>
                     <div class="input-group">
@@ -58,22 +63,22 @@
                         <label for="otro">Otro</label>
                     </div>
                     <div class="input-group">
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="correo electrónico">
                         <label class="label" for="email">Correo Electrónico:</label>
                     </div>
                     <div class="input-group">
-                        <input type="password" id="pass" name="pass">
+                        <input type="password" id="pass" name="contraseña">
                         <label class="label" for="pass">Contraseña:</label>
                     </div>
                     <div class="input-group">
-                        <input type="password" id="pass2" name="pass2">
+                        <input type="password" id="pass2" name="repetir contraseña">
                         <label class="label" for="pass2">Repetir Contraseña:</label>
                     </div>
                     <div class="input-group radio" id="client">
-                        <input type="radio" name="user" id="painter" value="Pintor">
+                        <input type="radio" name="usuario" id="painter" value="Pintor">
                         <label for="painter">Pintor</label>
-                        <input type="radio" name="user" id="user" value="Usuario">
-                        <label for="user">Usuario</label>
+                        <input type="radio" name="usuario" id="user" value="Usuario">
+                        <label for="usuario">Usuario</label>
                     </div>
                     <input type="button" id="btn-save" value="Enviar">
                 </div>

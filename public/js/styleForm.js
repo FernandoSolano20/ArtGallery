@@ -5,6 +5,15 @@
     var regexText = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+(\s*[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*)*[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/;
     var regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+
+    var removeClassError = function (element) {
+        element.className = element.className.replace("error", "");
+    }
+
+    var addClassError = function (element) {
+        element.className = element.className + " error";
+    }
+
     var validateInputsNumber = function () {
         var elementos = document.querySelectorAll("[type='number']");
         var options = document.querySelectorAll("[type='radio'][name='id']");
@@ -17,29 +26,34 @@
             }
         }
         for (var i = 0; i < elementos.length; i++) {
-            if (elementos[i].type == "number" && elementos[i].classList[0] !== "error") {
+            if (elementos[i].type == "number") {
                 if (elementos[i].value.length == 0) {
-                    console.log('El campo ' + elementos[i].name + ' esta incompleto');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' esta incompleto', elementos[i].name + '1');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
-                } else if (elementos[i].value.length > 9) {
-                    console.log('El campo ' + elementos[i].name + ' tiene más de 9 caractéres');
-                    elementos[i].className = elementos[i].className + " error";
+                } else if (elementos[i].value.length !== 9) {
+                    toast('El campo ' + elementos[i].name + ' no tiene 9 caractéres', elementos[i].name + '2');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else if (identificator === "Cédula" && isNaN(elementos[i].value)) {
-                    console.log('El campo ' + elementos[i].name + ' no cumple con el formato');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' no cumple con el formato', elementos[i].name + '3');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else if (identificator === "Pasaporte" && isNaN(elementos[i].value)) {
-                    console.log('El campo ' + elementos[i].name + ' no cumple con el formato');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' no cumple con el formato', elementos[i].name + '4');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else if (identificator === "Residente" && isNaN(elementos[i].value)) {
-                    console.log('El campo ' + elementos[i].name + ' no cumple con el formato');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' no cumple con el formato', elementos[i].name + '5');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else {
-                    elementos[i].className = elementos[i].className.replace(" error", "");
+                    removeClassError(elementos[i]);
                 }
             } else {
                 error = true;
@@ -53,21 +67,29 @@
         var elementos = document.querySelectorAll("[type='text']");
         var error = false;
         for (var i = 0; i < elementos.length; i++) {
-            if (elementos[i].type == "text" && elementos[i].classList[0] !== "error") {
+            if (elementos[i].type == "text") {
                 if (elementos[i].value.length == 0) {
-                    console.log('El campo ' + elementos[i].name + ' esta incompleto');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' esta incompleto', elementos[i].name + '1');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else if (elementos[i].value.length > 100) {
-                    console.log('El campo ' + elementos[i].name + ' tiene más de 100 caractéres');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' tiene más de 100 caractéres', elementos[i].name + '2');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
+                    error = true;
+                } else if (elementos[i].value.length < 3) {
+                    toast('El campo ' + elementos[i].name + ' tiene menos de 3 caractéres', elementos[i].name + '3');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else if (!regexText.test(elementos[i].value)) {
-                    console.log('El campo ' + elementos[i].name + ' no cumple con el formato');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' no cumple con el formato', elementos[i].name + '4');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else {
-                    elementos[i].className = elementos[i].className.replace(" error", "");
+                    removeClassError(elementos[i]);
                 }
             }
         }
@@ -79,21 +101,29 @@
         var elementos = document.querySelectorAll("[type='email']");
         var error = false;
         for (var i = 0; i < elementos.length; i++) {
-            if (elementos[i].type == "email" && elementos[i].classList[0] !== "error") {
+            if (elementos[i].type == "email") {
                 if (elementos[i].value.length == 0) {
-                    console.log('El campo ' + elementos[i].name + ' esta incompleto');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' esta incompleto', elementos[i].name + '1');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else if (elementos[i].value.length > 100) {
-                    console.log('El campo ' + elementos[i].name + ' tiene más de 100 caractéres');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' tiene más de 100 caractéres', elementos[i].name + '2');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
+                    error = true;
+                } else if (elementos[i].value.length < 2) {
+                    toast('El campo ' + elementos[i].name + ' tiene menos de 2 caractéres', elementos[i].name + '3');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else if (!regexEmail.test(elementos[i].value)) {
-                    console.log('El campo ' + elementos[i].name + ' no cumple con el formato');
-                    elementos[i].className = elementos[i].className + " error";
+                    toast('El campo ' + elementos[i].name + ' no cumple con el formato', elementos[i].name + '4');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
                     error = true;
                 } else {
-                    elementos[i].className = elementos[i].className.replace(" error", "");
+                    removeClassError(elementos[i]);
                 }
             } else {
                 error = true;
@@ -107,24 +137,27 @@
         var ele = document.querySelectorAll("[type='password']");
         var error = false;
         for (var i = 0; i < ele.length; i++) {
-            if (ele[i].type == "password" && elementos[i].classList[0] !== "error") {
+            if (ele[i].type == "password") {
                 if (ele[i].value.length == 0) {
-                    console.log('El campo ' + ele[i].name + ' esta incompleto');
-                    ele[i].className = ele[i].className + " error";
+                    toast('El campo ' + ele[i].name + ' esta incompleto', ele[i].name + '1');
+                    removeClassError(ele[i]);
+                    addClassError(ele[i]);
                     error = true;
                 } else if (ele[i].value.length > 100) {
-                    console.log('El campo ' + ele[i].name + ' tiene más de 100 caractéres');
-                    ele[i].className = ele[i].className + " error";
+                    toast('El campo ' + ele[i].name + ' tiene más de 100 caractéres', ele[i].name + '2');
+                    removeClassError(ele[i]);
+                    addClassError(ele[i]);
                     error = true;
                 } else if (elementos.pass.value !== elementos.pass2.value) {
-                    elementos.pass.value = "";
-                    elementos.pass2.value = "";
-                    elementos.pass.className = elementos.pass.className + " error";
-                    elementos.pass2.className = elementos.pass2.className + " error";
+                    removeClassError(elementos.pass);
+                    addClassError(elementos.pass);
+                    removeClassError(elementos.pass2);
+                    addClassError(elementos.pass2);
+                    toast('Las contraseñas no coinciden', elementos[i].name + '3');
                     error = true;
                 } else {
-                    elementos.pass.className = elementos.pass.className.replace(" error", "");
-                    elementos.pass2.className = elementos.pass2.className.replace(" error", "");
+                    removeClassError(elementos.pass);
+                    removeClassError(elementos.pass2);
                 }
             } else {
                 error = true;
@@ -138,7 +171,7 @@
         var elementos = document.getElementsByClassName("radio");
         var error = false;
         for (var i = 0; i < elementos.length; i++) {
-            if (elementos[i].children[0].type === "radio" && elementos[i].classList[0] !== "error") {
+            if (elementos[i].children[0].type === "radio") {
                 var resultado = false
                 var opciones = elementos[i].querySelectorAll("[type='radio']");
                 for (var index = 0; index < opciones.length; index++) {
@@ -149,11 +182,12 @@
                 }
 
                 if (resultado == false) {
-                    elementos[i].className = elementos[i].className + " error";
-                    console.log('El campo ' + opciones[0].name + ' esta incompleto');
+                    removeClassError(elementos[i]);
+                    addClassError(elementos[i]);
+                    toast('El campo ' + opciones[0].name + ' esta incompleto', opciones[0].name + '1');
                     error = true;
                 } else {
-                    elementos[i].className = elementos[i].className.replace(" error", "");
+                    removeClassError(elementos[i]);
                 }
             } else {
                 error = true;
@@ -250,6 +284,66 @@
         }
     };
 
+    var toast = function (text, id) {
+        var divAlert = document.querySelector(".alert");
+        var toast = divAlert.children;
+        var createElement = true;
+
+        if (toast.length < 12) {
+            if (toast) {
+                for (var i = 0; i < toast.length; i++) {
+                    if (toast[i].getAttribute("data-inputID") === id) {
+                        createElement = false;
+                    }
+                }
+            }
+        }
+        if(createElement)
+            createToast(text,id);
+    }
+
+    var createToast = function (text,id) {
+        var divAlert = document.querySelector(".alert");
+
+        var container = document.createElement("div");
+        container.setAttribute("class", "toast");
+        container.setAttribute("data-inputID", id);
+        container.addEventListener("click", deleteAlert);
+        divAlert.appendChild(container);
+
+
+        var message = document.createElement("div");
+        message.setAttribute("class", "message");
+        container.appendChild(message);
+
+        var closeAnchor = document.createElement("a");
+        closeAnchor.setAttribute("class", "close");
+        closeAnchor.textContent = "x";
+        message.appendChild(closeAnchor);
+
+        var iconAlert = document.createElement("i");
+        iconAlert.setAttribute("class", "far fa-exclamation-triangle warning");
+        message.appendChild(iconAlert);
+
+        var messageText = document.createElement("span");
+        messageText.setAttribute("class", "warning")
+        messageText.innerText += text;
+        message.appendChild(messageText);
+
+        setTimeout(function () {
+            if (container) {
+                divAlert.removeChild(container);
+            }
+        }, 25000);
+    }
+
+    var deleteAlert = function (event) {
+        if (event.target.nodeName === "A") {
+            var divAlert = document.querySelector(".alert");
+            divAlert.removeChild(event.currentTarget);
+        }
+    }
+
     // --- Eventos ---
     var attachEvents = function () {
         formulario = document.formulario_registro;
@@ -279,4 +373,4 @@
 
     attachEvents();
 
-}())
+}());
