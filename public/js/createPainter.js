@@ -23,3 +23,18 @@ function createUser(user) {
     }
     xhr.send(painter);*/
 }
+
+function uploadImage() {
+    var photo = document.getElementById('img').files[0];
+    var formData = new FormData();    
+    formData.append('photo', photo );
+
+    fetch('http://localhost:8080/upload', {
+        method: "POST",
+        body: formData
+    }).then(r => r.json())
+    .then(data => {
+      console.log(data)
+    })
+
+}

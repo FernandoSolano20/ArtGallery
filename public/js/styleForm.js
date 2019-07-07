@@ -197,8 +197,29 @@
         return error;
     };
 
+    var validateImage = function(){
+        var ele = document.querySelectorAll("[type='file']");
+        var error = false;
+        for (var i = 0; i < ele.length; i++) {
+            if (ele[i].type == "file") {
+                if (ele[i].value.length == 0) {
+                    toast('El campo ' + ele[i].name + ' esta incompleto', ele[i].name + '1');
+                    removeClassError(ele[i].parentElement);
+                    addClassError(ele[i].parentElement);
+                    error = true;
+                } else {
+                    removeClassError(ele[i].parentElement);
+                }
+            } else {
+                error = true;
+            }
+        }
+
+        return error;
+    };
+
     var enviar = function (e) {
-        if (validateInputsNumber() | validateInputsText() | validateEmail() | validatePassword() | validateRadios()) {
+        if (validateInputsNumber() | validateInputsText() | validateEmail() | validatePassword() | validateRadios() | validateImage()) {
             console.log('Falto validar los Input');
             e.preventDefault();
         } else {
@@ -304,6 +325,12 @@
         }
     };
 
+    var checkedFile = function () {
+        if (this.value) {
+            this.parentElement.className = this.parentElement.className.replace("error", "");
+        }
+    };
+
     var toast = function (text, id) {
         var divAlert = document.querySelector(".alert");
         var toast = divAlert.children;
@@ -387,6 +414,9 @@
             }
             if (elementos[i].type == "radio") {
                 elementos[i].addEventListener("change", checkedRadio);
+            }
+            if (elementos[i].type == "file") {
+                elementos[i].addEventListener("change", checkedFile);
             }
         }
     }

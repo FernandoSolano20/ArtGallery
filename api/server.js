@@ -1,13 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var fileupload = require('express-fileupload');
 const mongoose = require('mongoose');
 const cors = require('cors');
-var path = require('path');
 require('dotenv').config();
 
 const user = require('./routes/userRoute');
+//const image = require('./routes/imageRoute');
 
 const app = express();
+
+app.use(fileupload({
+    useTempFiles: true
+}));
 
 var cloudinary = require('cloudinary').v2;
 cloudinary.config({ 
@@ -56,3 +61,13 @@ function handleError(res, reason, message, code) {
 }
 
 app.use('/users', user);
+//app.use('/api',image);
+
+
+app.post('/upload', function(req, res){
+    console.log(req.files);
+    const file = req.files.photo;
+    cloudinary.uploader.upload(file.tempFilePath, function(err, result){
+            res.json(result)
+    });
+});
