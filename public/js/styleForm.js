@@ -202,7 +202,27 @@
             console.log('Falto validar los Input');
             e.preventDefault();
         } else {
-            createUser();
+            var formulario = document.formulario_registro,
+            elementos = formulario.elements;
+            var user = {
+                identification: elementos.ID.value,
+                name: elementos.name.value,
+                firstLastName: elementos.firstLastName.value,
+                secondLastName: elementos.secondLastName.value,
+                email: elementos.email.value,
+                password: elementos.pass.value,
+                gender: elementos.sexo.value,
+                userType: elementos.userType.value,
+                description: "",
+                stageName: ""
+            }
+            var description = elementos.descript;
+            var stageName = elementos.stageName;
+            if (description && stageName){
+                user.description = description.value;
+                user.stageName = stageName.value;
+            }
+            createUser(user);
             console.log("envia");
             e.preventDefault();
         }
@@ -298,11 +318,11 @@
                 }
             }
         }
-        if(createElement)
-            createToast(text,id);
+        if (createElement)
+            createToast(text, id);
     }
 
-    var createToast = function (text,id) {
+    var createToast = function (text, id) {
         var divAlert = document.querySelector(".alert");
 
         var container = document.createElement("div");

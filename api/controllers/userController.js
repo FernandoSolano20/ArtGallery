@@ -16,14 +16,16 @@ exports.userCreate = function (req, res) {
 
     User.create(
         {
+            identification: req.body.identification,
             name: req.body.name,
             firstLastName: req.body.firstLastName,
             secondLastName: req.body.secondLastName,
+            gender: req.body.gender,
             email: req.body.email,
             password: req.body.password,
+            userType: req.body.userType,
             description: req.body.description,
-            stageName: req.body.stageName,
-            gender: req.body.gender
+            stageName: req.body.stageName
         },
         function (err, user) {
             if (err)
