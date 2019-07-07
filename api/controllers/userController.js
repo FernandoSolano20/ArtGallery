@@ -1,6 +1,12 @@
 const User = require('../models/userModel');
+var cloudinary = require('cloudinary').v2;
 
 exports.userCreate = function (req, res) {
+    /*const file = req.files.photo;
+    let urlImage;
+    cloudinary.uploader.upload(file.tempFilePath, function (err, result) {
+        urlImage = result.secure_url;
+    });*/
     /*let user = new User(
         {
             name: req.body.name,
@@ -13,31 +19,30 @@ exports.userCreate = function (req, res) {
             gender: req.body.gender
         }
     );*/
-
-    User.create(
-        {
-            identification: req.body.identification,
-            name: req.body.name,
-            firstLastName: req.body.firstLastName,
-            secondLastName: req.body.secondLastName,
-            img: req.body.img,
-            gender: req.body.gender,
-            email: req.body.email,
-            password: req.body.password,
-            userType: req.body.userType,
-            description: req.body.description,
-            stageName: req.body.stageName
-        },
-        function (err, user) {
-            if (err)
-                res.send(err);
-            //Obtiene y devuelve todas las personas tras crear una de ellas
-            User.find(function (err, user) {
+        User.create(
+            {
+                identification: req.body.identification,
+                name: req.body.name,
+                firstLastName: req.body.firstLastName,
+                secondLastName: req.body.secondLastName,
+                img: req.body.img,
+                gender: req.body.gender,
+                email: req.body.email,
+                password: req.body.password,
+                userType: req.body.userType,
+                description: req.body.description,
+                stageName: req.body.stageName
+            },
+            function (err, user) {
                 if (err)
-                    res.send(err)
-                res.json(user);
+                    res.send(err);
+                //Obtiene y devuelve todas las personas tras crear una de ellas
+                User.find(function (err, user) {
+                    if (err)
+                        res.send(err)
+                    res.json(user);
+                });
             });
-        });
 
     /*user.save(function (err) {
         if (err) {
