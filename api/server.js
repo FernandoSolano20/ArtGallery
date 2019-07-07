@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+const views = require('./routes/viewsRoute');
 const user = require('./routes/userRoute');
-//const image = require('./routes/imageRoute');
+const image = require('./routes/imageRoute');
 
 const app = express();
 
@@ -60,14 +61,6 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({ "error": message });
 }
 
-app.use('/users', user);
-//app.use('/api',image);
-
-
-app.post('/upload', function(req, res){
-    console.log(req.files);
-    const file = req.files.photo;
-    cloudinary.uploader.upload(file.tempFilePath, function(err, result){
-            res.json(result)
-    });
-});
+app.use('', views);
+app.use('/api/users', user);
+app.use('/api/image',image);

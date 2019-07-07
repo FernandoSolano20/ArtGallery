@@ -20,6 +20,7 @@ exports.userCreate = function (req, res) {
             name: req.body.name,
             firstLastName: req.body.firstLastName,
             secondLastName: req.body.secondLastName,
+            img: req.body.img,
             gender: req.body.gender,
             email: req.body.email,
             password: req.body.password,

@@ -243,7 +243,7 @@
                 user.description = description.value;
                 user.stageName = stageName.value;
             }
-            createUser(user);
+            uploadImage(user);
             console.log("envia");
             e.preventDefault();
         }

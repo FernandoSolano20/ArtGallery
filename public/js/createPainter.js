@@ -1,5 +1,5 @@
 function createUser(user) {
-    fetch('http://localhost:8080/users/create', {
+    fetch('http://localhost:8080/api/users/create', {
         method: "POST",
         body: JSON.stringify(user),
         headers: {
@@ -9,32 +9,21 @@ function createUser(user) {
         response => response.json())
         .catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', response));
-
-    /*var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'http://localhost:8080/painters/create', true);
-
-    //Send the proper header information along with the request
-    //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    var response;
-    xhr.onreadystatechange = function () { // Call a function when the state changes.
-        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            response = this;
-        }
-    }
-    xhr.send(painter);*/
 }
 
-function uploadImage() {
+function uploadImage(user) {
     var photo = document.getElementById('img').files[0];
     var formData = new FormData();    
     formData.append('photo', photo );
 
-    fetch('http://localhost:8080/upload', {
+    fetch('http://localhost:8080/api/image/upload', {
         method: "POST",
         body: formData
-    }).then(r => r.json())
-    .then(data => {
-      console.log(data)
-    })
-
+    }).then(
+        response => response.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => {
+            user.img = response.secure_url;
+            createUser(user);
+        });
 }
